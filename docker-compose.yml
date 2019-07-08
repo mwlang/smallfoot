@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db:
+    container_name: ${LUCKY_APP_NAME}_db
+    image: postgres:11.3
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - internal
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: ${LUCKY_APP_NAME}_app
+    command: ["/app/bin/tasks", "db.migrate", "&&", "/app/bin/${LUCKY_APP_NAME}"]
+    networks:
+      - internal
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db
+
+volumes:
+  data:
+
+networks:
+  internal:

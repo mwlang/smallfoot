@@ -1,0 +1,5 @@
+.git
+.dockerignore
+bin/
+lib/
+spec/

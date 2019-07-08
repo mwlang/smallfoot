@@ -1,0 +1,19 @@
+/docs/
+/lib/
+/bin/
+/.shards/
+*.dwarf
+/node_modules
+yarn-error.log
+start_server
+*.dwarf
+*.local.cr
+/tmp
+/public/js
+/public/css
+/public/mix-manifest.json
+
+.editorconfig
+
+# Ignore Up cache file
+/up.cache

@@ -1,0 +1,36 @@
+name: smallfoot
+version: 0.1.0
+
+authors:
+  - mwlang <mwlang@cybrains.net>
+
+targets:
+  smallfoot:
+    main: src/smallfoot.cr
+  tasks:
+    main: tasks.cr
+  db.migrate:
+    main: src/db.migrate.cr
+
+crystal: 0.29.0
+
+dependencies:
+  lucky:
+    github: luckyframework/lucky
+    version: ~> 0.15.0
+  authentic:
+    github: luckyframework/authentic
+    version: ~> 0.3.0
+  carbon:
+    github: luckyframework/carbon
+    version: ~> 0.1.0
+  dotenv:
+    github: gdotdesign/cr-dotenv
+
+  lucky_flow:
+    github: luckyframework/lucky_flow
+    version: ~> 0.4.1
+
+  redis:
+    github: stefanwille/crystal-redis
+    version: ~> 2.1.1
