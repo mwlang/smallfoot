@@ -17,9 +17,8 @@ services:
   app:
     build: .
     container_name: ${LUCKY_APP_NAME}_app
-    # command: ["/app/bin/${LUCKY_APP_NAME}"]
-    # command: ["/app/bin/db.migrate", "db.migrate", "&&", "/app/bin/${LUCKY_APP_NAME}"]
-    command: ["/app/bin/tasks", "db.migrate", "&&", "/app/bin/${LUCKY_APP_NAME}"]
+    command: /app/bin/${LUCKY_APP_NAME}
+    restart: on-failure    
     networks:
       - internal
     ports:

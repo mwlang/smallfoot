@@ -17,8 +17,14 @@ Avram::Repo.configure do |settings|
   settings.lazy_load_enabled = Lucky::Env.production?
 end
 
-# puts "*" * 80, Lucky::Env.name + " " + Avram::Repo.settings.url, "*" * 80
+puts "*" * 80, Lucky::Env.name + " " + Avram::Repo.settings.url, "*" * 80
 
-# Avram::Migrator.run do
-#   Avram::Migrator::Runner.new(false).run_pending_migrations
-# end
+Avram::Migrator.run do
+  begin
+    Avram::Migrator::Runner.new(false).ensure_migrated!
+    puts "NO MIGRATIONS TO RUN"
+  rescue ex : Exception
+    puts "PENDING MIGRATIONS! Migrating now..."
+    Avram::Migrator::Runner.new(false).run_pending_migrations
+  end
+end
