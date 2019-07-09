@@ -37,6 +37,8 @@ RUN ldd /app/bin/smallfoot | tr -s '[:blank:]' '\n' | grep '^/' | \
     xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;' && \
   ldd /bin/ping | tr -s '[:blank:]' '\n' | grep '^/' | \
     xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;' && \
+  ldd /bin/cat | tr -s '[:blank:]' '\n' | grep '^/' | \
+    xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;' && \
   ldd /bin/sh | tr -s '[:blank:]' '\n' | grep '^/' | \
     xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;'
 
@@ -44,7 +46,7 @@ FROM scratch
 
 COPY --from=build /app/deps /
 COPY --from=build /usr/lib/crystal/ /usr/lib/crystal/
-COPY --from=build /bin/ping /bin/ls /bin/sh /bin/bash /bin/ls /bin/readlink /bin/ 
+COPY --from=build /bin/cat /bin/ping /bin/ls /bin/sh /bin/bash /bin/ls /bin/readlink /bin/ 
 COPY --from=build /usr/bin/which /usr/bin/diff /usr/bin/shards /usr/bin/crystal /usr/bin/basename /usr/bin/dirname /usr/bin/
 
 WORKDIR /app
