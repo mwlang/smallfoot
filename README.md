@@ -16,7 +16,7 @@ the first time images are launched, the migrator and app will come up nearly sim
 
 1. Started with Dockerfile from https://github.com/luckyframework/website-v2/blob/master/Dockerfile
 2. Turned into multi-stage build
-3. Began minimizing following https://manas.tech/blog/2017/04/03/shipping-crystal-apps-in-a-small-docker-image.html
+3. Began minimizing following https://manas.tech/blog/2017/04/03/shipping-crystal-apps-in-a-small-docker-image/
 4. Used https://gist.github.com/bcardiff/85ae47e66ff0df35a78697508fcb49af#gistcomment-2078660 instead of the list-deps.cr script
 5. Removed the lucky_cli from system and built it instead from the installed shards of the library
 
